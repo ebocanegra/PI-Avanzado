@@ -1,0 +1,78 @@
+<div class="contenedor-total">
+
+    <div class="separacion"></div>
+
+    <form class="formulario" [formGroup]="signupForm">
+        
+        <h1>Registrate</h1>
+        <div class="contenedor">
+        
+            <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <label><input [(ngModel)]="monitor.nombre" type="text" formControlName="nombre" placeholder="Nombre Completo">  </label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <h6 class="error-validaciones" *ngIf="nombre.errors.required">Nombre obligatorio.</h6>
+                <h6 class="error-validaciones" *ngIf="nombre.errors.minlength">El nombre tiene que tener minimo 5 caracteres.</h6>
+            </div>
+
+
+            <div class="input-contenedor">
+                <i class="fas fa-user-shield icon"></i>
+                <label><input [(ngModel)]="monitor.nif" type="text" formControlName="nif" placeholder="Nif"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="nif.invalid && (nif.dirty || nif.touched)">
+                <h6 class="error-validaciones" *ngIf="nif.errors.required">Dni obligatorio.</h6>
+                <h6 class="error-validaciones" *ngIf="(nif.dirty || nif.touched) && nif.invalid && nif.errors.pattern">El dni no es valido.</h6>
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-road icon"></i>
+                <label><input [(ngModel)]="monitor.direccion" type="text" formControlName="direccion" placeholder="Dirección"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                <h6 class="error-validaciones" *ngIf="direccion.errors.required">direccion obligatoria.</h6>
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-envelope icon"></i>
+                <label><input [(ngModel)]="monitor.correo" type="text" formControlName="email" placeholder="Correo Electronico"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <h6 class="error-validaciones" *ngIf="email.errors.required">Email obligatorio.</h6>
+                <h6 class="error-validaciones" *ngIf="email.errors.minlength">El Email tiene que tener minimo 5 caracteres.</h6>
+                <h6 class="error-validaciones" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">El Email no tiene un patron valido.</h6>
+            </div>
+
+            
+            <div class="input-contenedor">
+                <i class="fas fa-phone icon"></i>
+                <label><input [(ngModel)]="monitor.telefono" type="text" formControlName="telefono" placeholder="Teléfono"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                <h6 class="error-validaciones" *ngIf="telefono.errors.required">Fecha de nacimiento obligatoria.</h6>
+                <h6 class="error-validaciones" *ngIf="telefono.errors.minlength">El telefono no es valido.</h6>
+            </div>
+            
+            <div class="input-contenedor">
+                <i class="fas fa-key icon"></i>
+                <label><input [(ngModel)]="monitor.contrasena" type="password" formControlName="contrasena" placeholder="Contraseña"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+                <h6 class="error-validaciones" *ngIf="contrasena.errors.required">Contraseña obligatoria.</h6>
+                <h6 class="error-validaciones" *ngIf="contrasena.errors.minlength">La contraseña tiene que tener minimo 5 caracteres.</h6>
+            </div>
+
+            <input (click)="saveMonitor()" [disabled]="signupForm.invalid" value="Registrate" class="button">
+            
+            <p>¿Ya tienes una cuenta?<a class="link" routerLink="/monitoresAdmin" routerLinkActive="active"> Ir a monitores administrador</a></p>
+            <p><a class="link" routerLink="/" routerLinkActive="active">Ir al inicio</a></p>
+        </div>
+    </form>
+</div>

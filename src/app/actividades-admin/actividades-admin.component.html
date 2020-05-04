@@ -1,0 +1,50 @@
+<app-nav-admin></app-nav-admin>
+<!--Pagina Actividades-->
+
+<div class="container-fluid tamaño-total">
+
+    <section class="row tamaño-inf"> 
+
+        <div class="col-md-12 col-sm-12 ">
+        
+            <div class="row">
+                <div class="col-md-12 col-sm-12 contenedor-inf">
+                    <div>
+                        <h5 class="estilo-titulo">Número de actividades:  {{actividadesTotales}} ACTIVIDADES</h5>
+                    </div>
+            
+                    <div class="container-btn-crear">
+                        <input type="submit" value="Crear Actividad" class="button" routerLink="/crearActividad" routerLinkActive="active">
+                    </div>
+
+                        <div class="table-responsive text-center">
+                            <table class="table table-striped ajuste-tabla">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Nombre</th>
+                                        <th>Código monitor</th>
+                                        <th>Información</th>
+                                        <th></th>
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let actividad of actividades">
+                                        <td>{{actividad.codigo}}</td>
+                                        <td>{{actividad.nombre}}</td>
+                                        <td>{{actividad.codigo_monitor}}</td>
+                                        <td>{{actividad.informacion}}</td>
+                                        <td><a class="button" routerLink="/crearActividad/{{actividad.codigo}}" routerLinkActive="active">Modificar</a></td>
+                                        <td> <a class="button" (click)="delete(actividad.codigo)">Eliminar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                </div>
+            </div>
+        </div> 
+    </section>
+</div>

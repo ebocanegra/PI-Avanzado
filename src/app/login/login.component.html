@@ -1,0 +1,35 @@
+<div class="contenedor-total">
+
+    <div class="separacion"></div>
+
+    <form class="formulario" [formGroup]="signupLogin" (ngSubmit)="onSaveForm()">
+
+        <h1>Login</h1>
+        <div class="contenedor">
+            <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <label> <input type="text" formControlName="nombre" placeholder="Nombre Completo"> </label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <h6 class="error-validaciones" *ngIf="nombre.errors.required">Nombre obligatorio.</h6>
+                <h6 class="error-validaciones" *ngIf="nombre.errors.minlength">El nombre tiene que tener minimo 5 caracteres.</h6>
+            </div>
+            
+            <div class="input-contenedor">
+                <i class="fas fa-key icon"></i>
+                <label> <input type="password" formControlName="contrasena" placeholder="Contraseña"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+                <h6 class="error-validaciones" *ngIf="contrasena.errors.required">Contraseña obligatoria.</h6>
+                <h6 class="error-validaciones" *ngIf="contrasena.errors.minlength">La contraseña tiene que tener minimo 5 caracteres.</h6>
+            </div>
+
+            <input type="submit" [disabled]="signupLogin.invalid" value="Login" class="button" routerLink="/inicioCliente" routerLinkActive="active">
+            <p>¿No tienes cuenta? <a class="link" routerLink="/registroError" routerLinkActive="active">Información</a></p>
+            <p><a class="link" routerLink="/" routerLinkActive="active">Ir al inicio</a></p>
+        </div>
+    </form>
+</div>
+

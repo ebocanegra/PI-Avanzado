@@ -1,0 +1,78 @@
+<div class="contenedor-total">
+
+    <div class="separacion"></div>
+
+    <div class="formulario" [formGroup]="signupCliente">
+        
+        <h1>Registrate</h1>
+        <div class="contenedor">
+        
+            <div class="input-contenedor">
+                <i class="fas fa-user icon"></i>
+                <label><input [(ngModel)]="cliente.nombre" type="text" formControlName="nombre" placeholder="Nombre Completo">  </label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <h6 class="error-validaciones" *ngIf="nombre.errors.required">Nombre obligatorio.</h6>
+                <h6 class="error-validaciones" *ngIf="nombre.errors.minlength">El nombre tiene que tener minimo 5 caracteres.</h6>
+            </div>
+
+
+            <div class="input-contenedor">
+                <i class="fas fa-user-shield icon"></i>
+                <label><input [(ngModel)]="cliente.nif" type="text" formControlName="nif" placeholder="Nif"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="nif.invalid && (nif.dirty || nif.touched)">
+                <h6 class="error-validaciones" *ngIf="nif.errors.required">Dni obligatorio.</h6>
+                <h6 class="error-validaciones" *ngIf="(nif.dirty || nif.touched) && nif.invalid && nif.errors.pattern">El dni no es valido.</h6>
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-road icon"></i>
+                <label><input [(ngModel)]="cliente.direccion" type="text" formControlName="direccion" placeholder="Dirección"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                <h6 class="error-validaciones" *ngIf="direccion.errors.required">direccion obligatoria.</h6>
+            </div>
+
+            <div class="input-contenedor">
+                <i class="fas fa-envelope icon"></i>
+                <label><input [(ngModel)]="cliente.correo" type="text" formControlName="email" placeholder="Correo Electronico"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <h6 class="error-validaciones" *ngIf="email.errors.required">Email obligatorio.</h6>
+                <h6 class="error-validaciones" *ngIf="email.errors.minlength">El Email tiene que tener minimo 5 caracteres.</h6>
+                <h6 class="error-validaciones" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">El Email no tiene un patron valido.</h6>
+            </div>
+
+            
+            <div class="input-contenedor">
+                <i class="fas fa-table icon"></i>
+                <label><input [(ngModel)]="cliente.fechaInscripcion" type="text" formControlName="fechaInscripcion" placeholder="Fecha de Inscripción"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="fechaInscripcion.invalid && (fechaInscripcion.dirty || fechaInscripcion.touched)">
+                <h6 class="error-validaciones" *ngIf="fechaInscripcion.errors.required">Fecha de nacimiento obligatoria.</h6>
+                <h6 class="error-validaciones" *ngIf="(fechaInscripcion.dirty || fechaInscripcion.touched) && fechaInscripcion.invalid && fechaInscripcion.errors.pattern">El formato ha de ser dd/mm/aaaa.</h6>
+            </div>
+            
+            <div class="input-contenedor">
+                <i class="fas fa-key icon"></i>
+                <label><input [(ngModel)]="cliente.contrasena" type="password" formControlName="contrasena" placeholder="Contraseña"></label>
+            </div>
+
+            <div class="container-validaciones" *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+                <h6 class="error-validaciones" *ngIf="contrasena.errors.required">Contraseña obligatoria.</h6>
+                <h6 class="error-validaciones" *ngIf="contrasena.errors.minlength">La contraseña tiene que tener minimo 5 caracteres.</h6>
+            </div>
+
+            <input (click)="saveCliente()" [disabled]="signupCliente.invalid" value="Registrate" class="button">
+            
+            <p>¿Ya tienes una cuenta?<a class="link" routerLink="/usuarioAdmin" routerLinkActive="active"> Ir a clientes administrador</a></p>
+            <p><a class="link" routerLink="/" routerLinkActive="active">Ir al inicio</a></p>
+        </div>
+    </div>
+</div>
